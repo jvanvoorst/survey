@@ -1,8 +1,9 @@
+// requires
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 // connect to DB
-var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/survey2016');
 
 // create express app object
@@ -14,14 +15,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 // controller requires
-var surveySubmitCntrl = require('./controllers/surveySubmit');
+var surveyCntrl = require('./controllers/surveyCntrl');
 
 // Routes
 app.get('/', function(req, res){
   res.sendFile('/html/index.html', {root : './public'})
 });
 
-app.post('api/submitSurvey', surveySubmitCntrl.submitSurvey);
+app.post('/api/submitSurvey', surveyCntrl.submitSurvey);
 
 // Creating Server and Listening for Connections \\
 var port = 8082

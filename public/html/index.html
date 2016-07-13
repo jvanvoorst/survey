@@ -11,6 +11,7 @@
 
 <body ng-controller="surveyCntrl">
 
+
     <form class="container" ng-submit="submitSurvey()">
 
         <!-- User Status -->
@@ -45,7 +46,7 @@
                     <input type="radio" ng-model="survey.user" value="Non-UCB">
                      Non-University of Colorado at Boulder
                 </label>
-                <input type="text" class="form-control" ng-model="survey.user.other">
+                <input type="text" class="form-control" ng-model="survey.userOther">
             </div>
         </div>
 
@@ -84,18 +85,18 @@
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio ng-model="survey.affiliation" value="Other UCB">
+                    <input type="radio" ng-model="survey.affiliation" value="Other UCB">
                     Other UCB
                 </label>
-                <input type="text" class="form-control" ng-model="survey.affiliation.otherUCB">
+                <input type="text" class="form-control" ng-model="survey.affiliationOtherUCB">
             </div>
             <div class="radio">
                 <label>
                     <input type="radio" ng-model="survey.affiliation" value="Non-UCB">
                      Non-University of Colorado at Boulder (UCB)
                 </label>
-                <input type="text" class="form-control" ng-model="survey.affiliation.nonUCB">
             </div>
+                <input type="text" class="form-control" ng-model="survey.affiliationNonUCB">
         </div>
 
         <!-- Location -->
@@ -154,14 +155,14 @@
         <div class="form-group bg-color-1">
             <p>5 - If you indicated Sponsored (Funded) Research in question 4, please provide the following information:</p>
             <p>Sponsor or fund source name:</p>
-            <input type="text" class="form-control" ng-model="survey.sponsored.sourceName">
+            <input type="text" class="form-control" ng-model="survey.sourceName">
             <p>Principal investigator/researcher:</p>
-            <input type="text" class="form-control" ng-model="survey.sponsored.principalInvestigator">
+            <input type="text" class="form-control" ng-model="survey.principalInvestigator">
             <p>Name of grant</p>
-            <input type="text" class="form-control" ng-model="survey.sponsored.grantName">
+            <input type="text" class="form-control" ng-model="survey.grantName">
         </div>
 
-        <button type="button" class="btn btn-warning">Submit Survey</button>
+        <button type="submit" class="btn btn-warning">Submit Survey</button>
 
     </form>
 
