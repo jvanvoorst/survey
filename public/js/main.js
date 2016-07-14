@@ -2,6 +2,9 @@ var app = angular.module('surveyApp', []);
 
 app.controller('surveyCntrl', ['$scope', '$http', function($scope, $http) {
 
+    $scope.survey = {};
+    $scope.survey.timeStamp = new Date();
+
     $scope.submitSurvey = function() {
 
         console.log($scope.survey);
@@ -14,7 +17,7 @@ app.controller('surveyCntrl', ['$scope', '$http', function($scope, $http) {
             else {
                 // redirect
             }
-        })
-    }
+        });
+    };
 
 }]);

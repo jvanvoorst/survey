@@ -26,15 +26,25 @@ var surveySchema = mongoose.Schema( {
         type: String,
         required: true
     },
-    sourceName: {
+    sponsor: {
         type: String
     },
-    affiliationNonUCB: {
+    researcher: {
         type: String
     },
-    grantName: {
+    grant: {
         type: String
+    },
+    timeStamp: {
+        type: String,
+        required: true
+    },
+    sessionID: {
+        type: String,
+    },
+    url: {
+        type: String,
     }
 });
 
-module.exports = mongoose.model('survey', surveySchema);
+module.exports = surveySchema;
