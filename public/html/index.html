@@ -7,170 +7,220 @@
     <link rel="stylesheet" type="text/css" href="../style/style.css">
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-messages.min.js"></script>
 </head>
 
 <body ng-controller="surveyCntrl">
 
 
-    <form class="container" ng-submit="submitSurvey()">
+    <form class="container" name="form" ng-submit="submitSurvey()" novalidate>
 
         <!-- User Status -->
-        <div class="form-group bg-color-1 row">
-            <p>1 - Are You A:</p>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.user" value="Grad">
-                     UCB Graduate Student
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.user" value="Undergrad">
-                     UCB Undergraduate Student
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.user" value="Faculty">
-                     UCB Faculty
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.user" value="Staff">
-                     UCB Staff
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.user" value="UCB-Other">
-                     University of Colorado Other
-                </label>
-                <input type="text" class="form-control" ng-model="survey.userOther">
-            </div>
-             <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.user" value="UCB-Non">
-                     Non University of Colorado
-                </label>
+        <div class="form-group bg-color-1 row" ng-class="{'missing': form.user.$invalid && submitted}">
+            <div class="container">
+                <p>1 - Are You A:</p>
+
+                <!-- error message to show if no answer -->
+                <div ng-messages="form.user.$error" ng-show="submitted">
+                    <div class="pull-right" ng-message="required">This answer is required</div>
+                </div>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.user" name="user" value="Grad" required>
+                         UCB Graduate Student
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.user" name="user" value="Undergrad" required>
+                         UCB Undergraduate Student
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.user" name="user" value="Faculty" required>
+                         UCB Faculty
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.user" name="user" value="Staff" required>
+                         UCB Staff
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.user" name="user" value="UCB-other" required>
+                         University of Colorado Other
+                    </label>
+                </div>
+
+                <input type="text" class="form-control" name="userOther" ng-model="survey.userOther" ng-class="{'missing': submitted && survey.user == 'UCB-other' && !survey.userOther}">
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.user" name="user" value="UCB-Non" required>
+                        Non University of Colorado
+                    </label>
+                </div>
+
             </div>
         </div>
 
         <!-- Affiliation -->
-        <div class="form-group bg-color-2 row">
-            <p>2 - Your Affiliation?</p>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.affiliation" value="Arts and Sciences">
-                    College of Arts and Sciences
-                </label>
+        <div class="form-group bg-color-2 row" ng-class="{'missing': form.affiliation.$invalid && submitted}">
+            <div class="container">
+                <p>2 - Your Affiliation?</p>
+
+                <!-- error message to show if no answer -->
+                <div ng-messages="form.affiliation.$error" ng-show="submitted">
+                    <div class="pull-right" ng-message="required">This answer is required</div>
+                </div>
+
+                <div class="radio"> required
+                    <label>
+                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Arts and Sciences" required>
+                        College of Arts and Sciences
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Engineering and Applied Science" required>
+                        College of Engineering and Applied Science
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Journalism and Mass Communication" required>
+                         School of Journalism and Mass Communication
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Education" required>
+                        School of Education
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Continuing Education" required>
+                        Continuing Education
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Other-UCB" required>
+                        Other UCB
+                    </label>
+                </div>
+
+                <input type="text" class="form-control" ng-model="survey.affiliationOtherUCB" ng-class="{'missing': submitted && survey.affiliation == 'Other-UCB' && !survey.affiliationOtherUCB}">
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Non-UCB" required>
+                         Non-University of Colorado at Boulder (UCB)
+                    </label>
+                </div>
+
+                <input type="text" class="form-control" ng-model="survey.affiliationNonUCB" ng-class="{'missing': submitted && survey.affiliation == 'Non-UCB' && !survey.affiliationNonUCB}">
+
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.affiliation" value="Engineering and Applied Science">
-                    College of Engineering and Applied Science
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.affiliation" value="Journalism and Mass Communication">
-                     School of Journalism and Mass Communication
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.affiliation" value="Education">
-                    School of Education
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.affiliation" value="Continuing Education">
-                    Continuing Education
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.affiliation" value="Other UCB">
-                    Other UCB
-                </label>
-                <input type="text" class="form-control" ng-model="survey.affiliationOtherUCB">
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.affiliation" value="Non-UCB">
-                     Non-University of Colorado at Boulder (UCB)
-                </label>
-            </div>
-                <input type="text" class="form-control" ng-model="survey.affiliationNonUCB">
         </div>
 
         <!-- Location -->
-        <div class="form-group bg-color-1">
-            <p>3 - Are you currently located?</p>
-             <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.location" value="In library">
-                    In the library
-                </label>
-            </div>
-             <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.location" value="On campus, not in library">
-                    on campus, but not in the library
-                </label>
-            </div>
-             <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.location" value="Off campus">
-                    Off campus
-                </label>
+        <div class="form-group bg-color-1 row" ng-class="{'missing': form.location.$invalid && submitted}">
+            <div class="container">
+                <p>3 - Are you currently located?</p>
+
+                <!-- error message to show if no answer -->
+                <div ng-messages="form.location.$error" ng-show="submitted">
+                    <div class="pull-right" ng-message="required">This answer is required</div>
+                </div>
+
+                 <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.location" name="location" value="In library" required>
+                        In the library
+                    </label>
+                </div>
+                 <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.location" name="location" value="On campus, not in library" required>
+                        on campus, but not in the library
+                    </label>
+                </div>
+                 <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.location" name="location" value="Off campus" required>
+                        Off campus
+                    </label>
+                </div>
+
             </div>
         </div>
 
         <!-- Usage -->
-        <div class="form-group bg-color-2">
-            <p>4 - Purpose for using online resource?</p>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.usage" value="Non-sponsored research">
-                    Instruction/Education/Non-Sponsored Research
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.usage" value="Sponsored research">
-                    Sponsored (Funded) Research
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.usage" value="Sponsored other">
-                    Other Sponsored Activities
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="survey.usage" value="Other activities">
-                    Other Activities
-                </label>
+        <div class="form-group bg-color-2 row" ng-class="{'missing': form.usage.$invalid && submitted}">
+            <div class="container">
+                <p>4 - Purpose for using online resource?</p>
+
+                <!-- error message to show if no answer -->
+                <div ng-messages="form.usage.$error" ng-show="submitted">
+                    <div class="pull-right" ng-message="required">This answer is required</div>
+                </div>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.usage" name="usage" value="Non-sponsored research" required>
+                        Instruction/Education/Non-Sponsored Research
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.usage" name="usage" value="Sponsored research" required>
+                        Sponsored (Funded) Research
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.usage" name="usage" value="Sponsored other" required>
+                        Other Sponsored Activities
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="survey.usage" name="usage" value="Other activities" required>
+                        Other Activities
+                    </label>
+                </div>
+
             </div>
         </div>
 
         <!-- if Sponsored (Funded) -->
-        <div class="form-group bg-color-1">
-            <p>5 - If you indicated Sponsored (Funded) Research in question 4, please provide the following information:</p>
-            <p>Sponsor or fund source name:</p>
-            <input type="text" class="form-control" ng-model="survey.sponsor">
-            <p>Principal investigator/researcher:</p>
-            <input type="text" class="form-control" ng-model="survey.researcher">
-            <p>Name of grant</p>
-            <input type="text" class="form-control" ng-model="survey.grant">
+        <div class="form-group bg-color-1 row">
+            <div class="container">
+                <p>5 - If you indicated Sponsored (Funded) Research in question 4, please provide the following information:</p>
+
+                <div ng-show="submitted && survey.usage =='Sponsored research' && (!survey.grant || !survey.researcher || !survey.sponsor)">
+                    <div class="pull-right">These answers are required since you answered Sponsored (Funded) Reasearch to question 4</div>
+                </div>
+
+                <p>Sponsor or fund source name:</p>
+                <input type="text" class="form-control" ng-model="survey.sponsor" ng-class="{'missing': submitted && survey.usage == 'Sponsored research' && !survey.sponsor}">
+                <p>Principal investigator/researcher:</p>
+                <input type="text" class="form-control" ng-model="survey.researcher" ng-class="{'missing': submitted && survey.usage == 'Sponsored research' && !survey.researcher}">
+                <p>Name of grant</p>
+                <input type="text" class="form-control" ng-model="survey.grant" ng-class="{'missing': submitted && survey.usage == 'Sponsored research' && !survey.grant}">
+            </div>
         </div>
 
         <button type="submit" class="btn btn-warning">Submit Survey</button>
 
     </form>
+
 
     <script type="text/javascript" src="../js/main.js"></script>
 </body>
