@@ -18,15 +18,15 @@ app.controller('surveyCntrl', ['$scope', '$http', function($scope, $http) {
             console.log('cannot submit')
         }
 
-        // $http.post('/api/submitSurvey', $scope.survey).then(function(res) {
-        //     if (res.data.error) {
-        //         //handle error
-        //         console.log(res.data);
-        //     }
-        //     else {
-        //         // redirect
-        //     }
-        // });
+        $http.post('/api/submitSurvey', $scope.survey).then(function(res) {
+            if (res.data.error) {
+                //handle error
+                console.log(res.data);
+            }
+            else {
+                // redirect
+            }
+        });
     };
 
 }]);

@@ -1,5 +1,4 @@
-var surveySchema = require('../models/survey');
-var mongoose = require('mongoose');
+var Survey = require('../models/survey');
 
 // create var for current month
 var date = new Date();
@@ -7,11 +6,9 @@ var month = date.getMonth();
 // create var for collection name using current month variable
 var collection = 'survey' + month;
 
-// connect to collection and use surveySchema
-var Survey = mongoose.model(collection, surveySchema);
-
-var surveyController = {
-    submitSurvey : function(req, res) {
+module.exports = {
+    submitSurvey: function(req, res) {
+        console.log('hitting submit')
         console.log(req.body);
         var survey = new Survey(req.body);
         survey.save(function(err) {
@@ -24,6 +21,32 @@ var surveyController = {
             }
         });
     },
+    surveyFind: function(req, res) {
+
+        var id = Number(req.query.id);
+        var redirectUrl = req.query.url;
+        console.log(typeof id);
+
+        console.log(id);
+        Survey.collection.findOne({'sessionID': id}, function(err, result) {
+            console.log(result);
+        });
+
+        // Survey.collection.find({sessionID: id}, function(err, results) {
+        //     console.log('working');
+        //     console.log('from callback ' + results);
+        // });
+
+        // console.log('executing search');
+        // console.log(Survey.collection.find({sessionID: id}).count() > 0);
+
+        // if (Survey.collection.findOne({sessionID: id})) {
+        //     console.log('found');
+        // }
+        // else {
+        //     console.log('not found');
+        // }
+
+    }
 };
 
-module.exports = surveyController;
