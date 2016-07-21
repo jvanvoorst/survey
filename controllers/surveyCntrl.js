@@ -6,10 +6,43 @@ var month = date.getMonth();
 // create var for collection name using current month variable
 var collection = 'survey' + month;
 
+var defaultUrl = 'http://www.colorado.edu/libraries/'
+var surveyActive = true;
+var id = '';
+var redirectUrl = '';
+
 module.exports = {
+
+    startSurvey: function(req, res) {
+
+        id = Number(req.query.id);
+        redirectUrl = req.query.url;
+        console.log(redirectUrl);
+
+        if (surveyActive) {
+            // check for session id in database
+            Survey.collection.findOne({'sessionID': id}, function(err, result) {
+                if (result) {
+                    // sessionID is already in database so send user to their resource
+                    console.log('ID found sending to resource')
+                    if (redirectUrl) {res.redirect(redirectUrl);}
+                    else {res.redirect(defaultUrl);}
+                }
+                else {
+                    // SessionID is new so send user to survey
+                    console.log('Unique ID send to survey')
+                    res.sendFile('/html/index.html', {root : './public'});
+                }
+            });
+        }
+        else if (redirectUrl) { res.redirect(redirectUrl); }
+        else {
+            res.redirect(defaultUrl);
+        }
+    },
+
     submitSurvey: function(req, res) {
-        console.log('hitting submit')
-        console.log(req.body);
+
         var survey = new Survey(req.body);
         survey.save(function(err) {
             if (err) {
@@ -20,33 +53,15 @@ module.exports = {
                 console.log('writing to db success');
             }
         });
-    },
-    surveyFind: function(req, res) {
 
-        var id = Number(req.query.id);
-        var redirectUrl = req.query.url;
-        console.log(typeof id);
-
-        console.log(id);
-        Survey.collection.findOne({'sessionID': id}, function(err, result) {
-            console.log(result);
-        });
-
-        // Survey.collection.find({sessionID: id}, function(err, results) {
-        //     console.log('working');
-        //     console.log('from callback ' + results);
-        // });
-
-        // console.log('executing search');
-        // console.log(Survey.collection.find({sessionID: id}).count() > 0);
-
-        // if (Survey.collection.findOne({sessionID: id})) {
-        //     console.log('found');
-        // }
-        // else {
-        //     console.log('not found');
-        // }
-
+        if (redirectUrl) {
+            res.send(redirectUrl);
+        }
+        else {
+            console.log('redirecting to default');
+            res.send(defaultUrl);
+        }
     }
+
 };
 

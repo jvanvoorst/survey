@@ -18,12 +18,12 @@
         </div>
     </header>
 
-    <div>
-        <p>This survey is being conducted during a two-hour time period today by the University of Colorado Boulder to assess the usage of online resources and library services at UCB. After completing the survey, you will be connected to the resource you selected. Your response to this short survey is important. All responses are anonymous. Thank you for your help.</p>
+    <div class="container">
+        <h4>This survey is being conducted during a two-hour time period today by the University of Colorado Boulder to assess the usage of online resources and library services at UCB. After completing the survey, you will be connected to the resource you selected. Your response to this short survey is important. All responses are anonymous. Thank you for your help.</h4>
     </div>
 
 
-    <form class="container" name="form" ng-submit="submitSurvey()" novalidate>
+    <form class="container" name="form" ng-submit="submitSurvey()" ng-if="!thanks" novalidate>
 
         <!-- User Status -->
         <div class="form-group bg-color-1 row" ng-class="{'missing': form.user.$invalid && submitted}">
@@ -88,7 +88,7 @@
                     <div class="pull-right" ng-message="required">This answer is required</div>
                 </div>
 
-                <div class="radio"> required
+                <div class="radio">
                     <label>
                         <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Arts and Sciences" required>
                         College of Arts and Sciences
@@ -230,6 +230,13 @@
         <button type="submit" class="btn btn-warning">Submit Survey</button>
 
     </form>
+
+    <div class="container" ng-if="thanks">
+        <h1>Thanks for taking the survey</h1>
+        <h3>Please click the continue button to be taken to your requested resource</h3>
+        <p>url: {{url}}</p>
+        <a class="btn btn-warning" ng-href="{{url}}">Continue</a>
+    </div>
 
 
     <script type="text/javascript" src="../js/main.js"></script>
