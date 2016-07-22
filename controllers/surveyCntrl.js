@@ -8,16 +8,15 @@ var collection = 'survey' + month;
 
 var defaultUrl = 'http://www.colorado.edu/libraries/'
 var surveyActive = true;
-var id = '';
-var redirectUrl = '';
 
 module.exports = {
 
     startSurvey: function(req, res) {
 
-        id = Number(req.query.id);
-        redirectUrl = req.query.url;
+        var redirectUrl = req.query.url;
+        var id = Number(req.query.id);
         console.log(redirectUrl);
+        console.log(id);
 
         if (surveyActive) {
             // check for session id in database
@@ -42,6 +41,9 @@ module.exports = {
     },
 
     submitSurvey: function(req, res) {
+
+        var redirectUrl = req.body.url;
+        console.log('redirectURL ' + redirectUrl);
 
         var survey = new Survey(req.body);
         survey.save(function(err) {

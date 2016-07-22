@@ -1,11 +1,18 @@
-var app = angular.module('surveyApp', ['ngMessages']);
+var app = angular.module('surveyApp', ['ngMessages', 'ngRoute']);
 
-app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $http, $window) {
+app.controller('surveyCntrl', ['$scope', '$http', '$window', '$routeParams', '$location', function($scope, $http, $window, $routeParams, $location) {
 
     $scope.submitted = false;
     $scope.survey = {};
     $scope.survey.timeStamp = new Date();
     $scope.thanks = false;
+
+    console.log(window.location.search);
+
+    // var id = $location.search().id;
+    // var url = $location.search().url;
+    // console.log(id);
+    // console.log(url);
 
     $scope.submitSurvey = function() {
 
@@ -16,6 +23,9 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
 
             console.log('can submit')
             $scope.thanks = true;
+
+            $scope.survey.sessionID = id;
+            $scope.survey.url = url;
 
             $http.post('/api/submitSurvey', $scope.survey).then(function(res) {
 
@@ -36,3 +46,15 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
 
 }]);
 
+var urlEncode = '?id=212&url=http://yahoo.com';
+
+var woquestion = urlEncode.slice(1);
+
+var urlEncodeArray = woquestion.split('&')
+
+var idString = urlEncodeArray[0].split('=');
+
+var urlString = urlEncodeArray[1].split('=');
+
+console.log(idString);
+console.log(urlString);
