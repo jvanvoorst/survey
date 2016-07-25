@@ -7,12 +7,16 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', '$routeParams', '$l
     $scope.survey.timeStamp = new Date();
     $scope.thanks = false;
 
-    console.log(window.location.search);
+    // grab the urlencode and parse out the session id and url
+    if (window.location.search) {
+        $scope.encode = {
+            id: window.location.search.split('&')[0].split('=')[1],
+            url: window.location.search.split('&')[1].split('=')[1]
+            // url: window.location.search.split('&')[1].split('=')[1].slice(3, (window.location.search.split('&')[1].split('=')[1].length - 3))
+        }
+    }
 
-    // var id = $location.search().id;
-    // var url = $location.search().url;
-    // console.log(id);
-    // console.log(url);
+    console.log($scope.encode);
 
     $scope.submitSurvey = function() {
 
@@ -24,8 +28,9 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', '$routeParams', '$l
             console.log('can submit')
             $scope.thanks = true;
 
-            $scope.survey.sessionID = id;
-            $scope.survey.url = url;
+            // add the session id and url to the survey object before sending to database
+            $scope.survey.sessionID = $scope.encode.id;
+            $scope.survey.url = $scope.encode.url;
 
             $http.post('/api/submitSurvey', $scope.survey).then(function(res) {
 
@@ -45,16 +50,3 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', '$routeParams', '$l
     };
 
 }]);
-
-var urlEncode = '?id=212&url=http://yahoo.com';
-
-var woquestion = urlEncode.slice(1);
-
-var urlEncodeArray = woquestion.split('&')
-
-var idString = urlEncodeArray[0].split('=');
-
-var urlString = urlEncodeArray[1].split('=');
-
-console.log(idString);
-console.log(urlString);

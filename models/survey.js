@@ -46,7 +46,7 @@ var surveySchema = mongoose.Schema( {
         required: true
     },
     sessionID: {
-        type: String,
+        type: Number,
     },
     url: {
         type: String,
