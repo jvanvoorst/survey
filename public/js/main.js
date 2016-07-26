@@ -14,16 +14,16 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', '$routeParams', '$l
             url: window.location.search.split('&')[1].split('=')[1]
             // url: window.location.search.split('&')[1].split('=')[1].slice(3, (window.location.search.split('&')[1].split('=')[1].length - 3))
         }
+        console.log($scope.encode);
     }
 
-    console.log($scope.encode);
 
     $scope.submitSurvey = function() {
 
         // set to true when submit button clicked
         $scope.submitted = true;
 
-        if (form.location[0].validity.valid) {
+        if (form.user[0].validity.valid && form.affiliation[0].validity.valid && form.location[0].validity.valid && form.usage[0].validity.valid) {
 
             console.log('can submit')
             $scope.thanks = true;

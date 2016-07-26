@@ -11,18 +11,9 @@ var surveySchema = mongoose.Schema( {
         type: String,
         required: true,
     },
-    userOther: {
-        type: String,
-    },
     affiliation: {
         type: String,
         required: true
-    },
-    affiliationOtherUCB: {
-        type: String
-    },
-    affiliationNonUCB: {
-        type: String
     },
     location: {
         type: String,
@@ -47,9 +38,11 @@ var surveySchema = mongoose.Schema( {
     },
     sessionID: {
         type: Number,
+        required: true
     },
     url: {
         type: String,
+        required: true
     }
 });
 

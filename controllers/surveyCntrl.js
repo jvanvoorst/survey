@@ -14,10 +14,9 @@ module.exports = {
     startSurvey: function(req, res) {
         // check if encoded url had a url in it
         if (req.query.url) {
-            var redirectUrl = req.query.url.slice(1, req.query.url.length -1);
+            var redirectUrl = req.query.url //.slice(1, req.query.url.length -1);
         }
-        console.log(redirectUrl);
-        console.log(collection);
+        console.log('redirectUrl: ' + redirectUrl);
 
         if (surveyActive) {
 
@@ -25,11 +24,10 @@ module.exports = {
             if (req.query.id) {
 
                 var id = Number(req.query.id);
-                console.log(id);
+                console.log('sessionID: ' + id);
 
                 // check for session id in database
                 Survey.collection.findOne({'sessionID': id}, function(err, result) {
-                    console.log(result);
                     if (result) {
                         // sessionID is already in database so send user to their resource
                         console.log('ID found sending to resource')
@@ -49,7 +47,7 @@ module.exports = {
                 res.sendFile('/html/index.html', {root : './public'});
             }
         }
-        // survey is not active
+        // survey is not active send to requested resource else default url
         else if (redirectUrl) { res.redirect(redirectUrl); }
         else {
             res.redirect(defaultUrl);
