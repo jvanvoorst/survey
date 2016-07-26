@@ -1,3 +1,4 @@
+/* questions background colors */
 .bg-color-1 {
     background-color: #efefef;
 }
@@ -7,6 +8,8 @@
 .missing {
     background-color: #ff8080;
 }
+
+/* header */
 header {
     width: 100%;
     height: 120px;
@@ -22,4 +25,12 @@ header {
     font-size: 28px;
     font-family: "HelveticaNeue-Light", "Helvetica Neue", sans-serif;
     padding: 25px 0 0 80px;
+}
+
+/* Misc */
+.form-control:last-child {
+    margin-bottom: 18px;
+}
+.btn-submit {
+    margin-bottom: 20px;
 }
