@@ -1,13 +1,9 @@
-var Survey = require('../models/survey');
+var Survey = require('../models/survey'),
+    json2csv = require('json2csv');
 
-// create var for current month
-var date = new Date();
-var month = date.getMonth();
-// create var for collection name using current month variable
-var collection = 'survey' + month;
-
-var defaultUrl = 'http://www.colorado.edu/libraries/'
-var surveyActive = true;
+var defaultUrl = 'http://www.colorado.edu/libraries/',
+    surveyActive = true,
+    fields = ['timeStamp', 'user', 'affiliation', 'location', 'usage', 'sponsor', 'researcher', 'grant', 'sessionID', 'url'];
 
 module.exports = {
 
@@ -27,7 +23,8 @@ module.exports = {
                 console.log('sessionID: ' + id);
 
                 // check for session id in database
-                Survey.collection.findOne({'sessionID': id}, function(err, result) {
+                Survey.findOne({'sessionID': id}, function(err, result) {
+                    console.log('findOne ', + result);
                     if (result) {
                         // sessionID is already in database so send user to their resource
                         console.log('ID found sending to resource')
@@ -77,6 +74,28 @@ module.exports = {
             console.log('redirecting to default');
             res.send(defaultUrl);
         }
+    },
+
+    getCsv: function(req, res) {
+        Survey.find({}, function(err, result) {
+            if (!err) {
+                json2csv({data: result, fields: fields}, function(err, csv) {
+                    if (!err) {
+                        res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+                        res.set('Content-Type', 'text/csv');
+                        res.status(200).send(csv);
+                    }
+                    else {
+                        console.log('ERROR in csv conversion: ');
+                        console.log(err);
+                    }
+                });
+            }
+            else {
+                console.log('ERROR in database query: ');
+                console.log(err);
+            }
+        });
     }
 
 };

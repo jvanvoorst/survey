@@ -28,6 +28,8 @@ app.get('/api/survey', surveyCntrl.startSurvey);
 
 app.post('/api/submitSurvey', jsonParser, surveyCntrl.submitSurvey);
 
+app.get('/api/getCsv', surveyCntrl.getCsv);
+
 // Creating Server and Listening for Connections \\
 var port = 8082
 app.listen(port, function(){
