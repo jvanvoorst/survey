@@ -1,9 +1,8 @@
-var Survey = require('../models/survey'),
-    json2csv = require('json2csv');
+var Survey = require('../models/survey');
+var json2csv = require('json2csv');
 
-var defaultUrl = 'http://www.colorado.edu/libraries/',
-    surveyActive = true,
-    fields = ['timeStamp', 'user', 'affiliation', 'location', 'usage', 'sponsor', 'researcher', 'grant', 'sessionID', 'url'];
+var defaultUrl = 'http://www.colorado.edu/libraries/';
+var surveyActive = true;
 
 module.exports = {
 
@@ -77,25 +76,36 @@ module.exports = {
     },
 
     getCsv: function(req, res) {
-        Survey.find({}, function(err, result) {
-            if (!err) {
-                json2csv({data: result, fields: fields}, function(err, csv) {
-                    if (!err) {
-                        res.setHeader('Content-disposition', 'attachment; filename=data.csv');
-                        res.set('Content-Type', 'text/csv');
-                        res.status(200).send(csv);
-                    }
-                    else {
-                        console.log('ERROR in csv conversion: ');
-                        console.log(err);
-                    }
-                });
-            }
-            else {
-                console.log('ERROR in database query: ');
-                console.log(err);
-            }
-        });
+        res.sendFile('/html/getcsv.html', {root: './public'});
+    },
+
+    downloadCsv: function(req, res) {
+
+        console.log(req.query);
+
+        var fields = ['timeStamp', 'user', 'affiliation', 'location', 'usage', 'sponsor', 'researcher', 'grant', 'sessionID', 'url'];
+
+        if (req.query.get === 'all') {
+            Survey.find({}, function(err, result) {
+                if (!err) {
+                    json2csv({data: result, fields: fields}, function(err, csv) {
+                        if (!err) {
+                            res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+                            res.set('Content-Type', 'text/csv');
+                            res.status(200).send(csv);
+                        }
+                        else {
+                            console.log('ERROR in csv conversion: ');
+                            console.log(err);
+                        }
+                    });
+                }
+                else {
+                    console.log('ERROR in database query: ');
+                    console.log(err);
+                }
+            });
+        }
     }
 
 };

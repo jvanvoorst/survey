@@ -24,11 +24,13 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var surveyCntrl = require('./controllers/surveyCntrl');
 
 // Routes
-app.get('/api/survey', surveyCntrl.startSurvey);
+app.get('/survey', surveyCntrl.startSurvey);
+
+app.get('/getcsv', surveyCntrl.getCsv);
 
 app.post('/api/submitSurvey', jsonParser, surveyCntrl.submitSurvey);
 
-app.get('/api/getCsv', surveyCntrl.getCsv);
+app.get('/api/downloadCsv', surveyCntrl.downloadCsv);
 
 // Creating Server and Listening for Connections \\
 var port = 8082

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UCB Web Survey Download</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container banner">
+            <p class="banner-text">University Libraries</p>
+        </div>
+    </header>
+
+    <form class="container" name="form" action="/api/downloadcsv" method="get" novalidate>
+        <p>What data do you want to download?</p>
+        <div class="radio">
+            <label>
+                <input type="radio" name="get" value="August">
+                 August
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="get" value="September">
+                 September
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="get" value="all" checked="checked">
+                 All to date
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-submit">Download</button>
+
+    </form>
+
+</body>
+</html>

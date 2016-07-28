@@ -1,4 +1,4 @@
-var app = angular.module('surveyApp', ['ngMessages', 'ngRoute']);
+var app = angular.module('surveyApp', ['ngMessages']);
 
 app.controller('surveyCntrl', ['$scope', '$http', '$window', '$routeParams', '$location', function($scope, $http, $window, $routeParams, $location) {
 
@@ -36,7 +36,7 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', '$routeParams', '$l
 
                 if (res.data.error) {
                     //handle error
-                    console.log(res.data);
+                    console.log(res.data.error);
                 }
                 else {
                     $scope.url = res.data
