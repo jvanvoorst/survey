@@ -29,8 +29,8 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
             $scope.thanks = true;
 
             // add the session id and url to the survey object before sending to database
-            $scope.survey.sessionID = $scope.encode.id;
-            $scope.survey.url = $scope.encode.url;
+            if ($scope.encode.id) { $scope.survey.sessionID = $scope.encode.id; }
+            if ($scope.encode.url) { $scope.survey.url = $scope.encode.url; }
 
             $http.post('/api/submitSurvey', $scope.survey).then(function(res) {
 
