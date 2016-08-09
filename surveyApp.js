@@ -21,7 +21,7 @@ var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // controller requires
-var surveyCntrl = require('./controllers/surveyCntrl');
+var surveyCntrl = require('./controllers/surveyCntrl.js');
 
 // Routes
 app.get('/survey', surveyCntrl.startSurvey);
@@ -33,7 +33,7 @@ app.post('/api/submitSurvey', jsonParser, surveyCntrl.submitSurvey);
 app.get('/api/downloadCsv', surveyCntrl.downloadCsv);
 
 // Creating Server and Listening for Connections \\
-var port = 8082
+var port = 8082;
 app.listen(port, function(){
   console.log('Server running on port ' + port);
 
