@@ -6,15 +6,13 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
     $scope.survey = {};
     $scope.survey.timeStamp = new Date();
     $scope.thanks = false;
+    $scope.encode = {};
 
     // grab the urlencode and parse out the session id and url
     if (window.location.search) {
-        $scope.encode = {
-            id: window.location.search.split('&')[0].split('=')[1],
-            url: window.location.search.split('&')[1].split('=')[1]
-            // url: window.location.search.split('&')[1].split('=')[1].slice(3, (window.location.search.split('&')[1].split('=')[1].length - 3))
-        };
-        console.log($scope.encode);
+        $scope.encode.id = window.location.search.split('&')[0].split('=')[1];
+        $scope.encode.url = window.location.search.split('&')[1].split('=')[1];
+        // url: window.location.search.split('&')[1].split('=')[1].slice(3, (window.location.search.split('&')[1].split('=')[1].length - 3))
     }
 
 
@@ -29,6 +27,7 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
             $scope.thanks = true;
 
             // add the session id and url to the survey object before sending to database
+            console.log($scope.encode);
             if ($scope.encode.id) { $scope.survey.sessionID = $scope.encode.id; }
             if ($scope.encode.url) { $scope.survey.url = $scope.encode.url; }
 
