@@ -15,21 +15,22 @@
 
     <header>
         <div class="container banner">
-            <p class="banner-text">University Libraries</p>
+            <h1 class="banner-text">University Libraries</h1>
         </div>
     </header>
 
     <div class="container">
-        <h4>This survey is being conducted during a two-hour time period today by the University of Colorado Boulder to assess the usage of online resources and library services at UCB. After completing the survey, you will be connected to the resource you selected. Your response to this short survey is important. All responses are anonymous. Thank you for your help.</h4>
+        <h2 class="main-heading">This survey is being conducted during a two-hour time period today by the University of Colorado Boulder to assess the usage of online resources and library services at UCB.</h2>
+        <h3 class="main-heading">After completing the survey, you will be connected to the resource you selected. Your response to this short survey is important. All responses are anonymous. Thank you for your help.</h3>
     </div>
 
 
     <form class="container" name="form" ng-submit="submitSurvey()" ng-if="!thanks" novalidate>
 
-        <!-- User Status -->
-        <div class="form-group bg-color-1 row" ng-class="{'missing': form.user.$invalid && submitted}">
+        <!-- 1 - User Status -->
+        <fieldset class="form-group bg-color-1 row" ng-class="{'missing': form.user.$invalid && submitted}">
             <div class="container">
-                <p>1 - Are You A:</p>
+                <legend>1 - Are You A:</legend>
 
                 <!-- error message to show if no answer -->
                 <div ng-messages="form.user.$error" ng-show="submitted">
@@ -37,55 +38,55 @@
                 </div>
 
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.user" name="user" value="Undergrad" required>
-                         UCB Undergraduate Student
+                    <label for="undergrad">
+                        <input id="undergrad" type="radio" ng-model="survey.user" name="user" value="Undergrad" required>
+                        UCB Undergraduate Student
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.user" name="user" value="Grad" required>
+                    <label for="grad">
+                        <input id="grad" type="radio" ng-model="survey.user" name="user" value="Grad" required>
                          UCB Graduate Student
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.user" name="user" value="Faculty" required>
+                    <label for="faculty">
+                        <input id="faculty" type="radio" ng-model="survey.user" name="user" value="Faculty" required>
                          UCB Faculty
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.user" name="user" value="Staff" required>
+                    <label for="staff">
+                        <input id="staff" type="radio" ng-model="survey.user" name="user" value="Staff" required>
                          UCB Staff
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.user" name="user" value="Post-Doc, RA, or Lecturer" required>
+                    <label for="post-doc">
+                        <input id="post-doc" type="radio" ng-model="survey.user" name="user" value="Post-Doc, RA, or Lecturer" required>
                          UCB Post-Doc Fellow, Research Associate, or Lecturer
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.user" name="user" value="other-UCB" required>
+                    <label for="other-user">
+                        <input id="other-user" type="radio" ng-model="survey.user" name="user" value="other-UCB" required>
                          Other UCB
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.user" name="user" value="non-UCB" required>
+                    <label for="non-user">
+                        <input id="non-user" type="radio" ng-model="survey.user" name="user" value="non-UCB" required>
                         Non University of Colorado
                     </label>
                 </div>
 
             </div>
-        </div>
+        </fieldset>
 
-        <!-- Affiliation -->
-        <div class="form-group bg-color-2 row" ng-class="{'missing': form.affiliation.$invalid && submitted}">
+        <!-- 2 - Affiliation -->
+        <fieldset class="form-group bg-color-2 row" ng-class="{'missing': form.affiliation.$invalid && submitted}">
             <div class="container">
-                <p>2 - Please indicate your affiliation:</p>
+                <legend>2 - Please indicate your affiliation:</legend>
 
                 <!-- error message to show if no answer -->
                 <div ng-messages="form.affiliation.$error" ng-show="submitted">
@@ -93,78 +94,78 @@
                 </div>
 
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Arts and Sciences" required>
+                    <label for="arts">
+                        <input id="arts" type="radio" ng-model="survey.affiliation" name="affiliation" value="Arts and Sciences" required>
                         College of Arts and Sciences
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Leeds" required>
+                    <label for="leeds">
+                        <input id="leeds" type="radio" ng-model="survey.affiliation" name="affiliation" value="Leeds" required>
                         Leeds School of Business
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Education" required>
+                    <label for="education">
+                        <input id="education" type="radio" ng-model="survey.affiliation" name="affiliation" value="Education" required>
                         School of Education
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Engineering and Applied Science" required>
+                    <label for="engineering">
+                        <input id="engineering" type="radio" ng-model="survey.affiliation" name="affiliation" value="Engineering and Applied Science" required>
                         College of Engineering and Applied Science
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Media, Communication, and Information" required>
+                    <label for="media">
+                        <input id="media" type="radio" ng-model="survey.affiliation" name="affiliation" value="Media, Communication, and Information" required>
                          College of Media, Communication and Information
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Law" required>
+                    <label for="law">
+                        <input id="law" type="radio" ng-model="survey.affiliation" name="affiliation" value="Law" required>
                         School of Law
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Music" required>
+                    <label for="music">
+                        <input id="music" type="radio" ng-model="survey.affiliation" name="affiliation" value="Music" required>
                         College of Music
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Continuing Education" required>
+                    <label for="cont-ed">
+                        <input id="cont-ed" type="radio" ng-model="survey.affiliation" name="affiliation" value="Continuing Education" required>
                         Continuing Education
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Research Institute" required>
+                    <label for="research">
+                        <input id="research" type="radio" ng-model="survey.affiliation" name="affiliation" value="Research Institute" required>
                         UCB Research Institute (e.g., LASP, IBS)
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Other-UCB" required>
+                    <label for="other-affiliation">
+                        <input id="other-affiliation" type="radio" ng-model="survey.affiliation" name="affiliation" value="Other-UCB" required>
                         Other UCB
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.affiliation" name="affiliation" value="Non-UCB" required>
+                    <label for="non-affiliation">
+                        <input id="non-affiliation" type="radio" ng-model="survey.affiliation" name="affiliation" value="Non-UCB" required>
                          Non-University of Colorado at Boulder (UCB)
                     </label>
                 </div>
             </div>
-        </div>
+        </fieldset>
 
-        <!-- Location -->
-        <div class="form-group bg-color-1 row" ng-class="{'missing': form.location.$invalid && submitted}">
+        <!-- 3 - Location -->
+        <fieldset class="form-group bg-color-1 row" ng-class="{'missing': form.location.$invalid && submitted}">
             <div class="container">
-                <p>3 - Are you currently located?</p>
+                <legend>3 - Are you currently located?</legend>
 
                 <!-- error message to show if no answer -->
                 <div ng-messages="form.location.$error" ng-show="submitted">
@@ -172,31 +173,31 @@
                 </div>
 
                  <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.location" name="location" value="In library" required>
+                    <label for="library">
+                        <input id="library" type="radio" ng-model="survey.location" name="location" value="In library" required>
                         In the library
                     </label>
                 </div>
                  <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.location" name="location" value="On campus, not in library" required>
+                    <label for="campus">
+                        <input id="campus" type="radio" ng-model="survey.location" name="location" value="On campus, not in library" required>
                         On campus, but not in the library
                     </label>
                 </div>
                  <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.location" name="location" value="Off campus" required>
+                    <label for="off-campus">
+                        <input id="off-campus" type="radio" ng-model="survey.location" name="location" value="Off campus" required>
                         Off campus
                     </label>
                 </div>
 
             </div>
-        </div>
+        </fieldset>
 
-        <!-- Usage -->
-        <div class="form-group bg-color-2 row" ng-class="{'missing': form.usage.$invalid && submitted}">
+        <!-- 4 - Usage -->
+        <fieldset class="form-group bg-color-2 row" ng-class="{'missing': form.usage.$invalid && submitted}">
             <div class="container">
-                <p>4 - Purpose for using online resource?</p>
+                <legend>4 - Purpose for using online resource?</legend>
 
                 <!-- error message to show if no answer -->
                 <div ng-messages="form.usage.$error" ng-show="submitted">
@@ -204,26 +205,26 @@
                 </div>
 
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.usage" name="usage" value="Sponsored" required>
-                        Sponsored (Funded) Research Projects <i class="btn btn-info btn-xs" ng-mouseenter="define.sponsored = true" ng-mouseleave="define.sponsored = false">definition</i>
+                    <label for="sponsored">
+                        <input id="sponsored" type="radio" ng-model="survey.usage" name="usage" value="Sponsored" required>
+                        Sponsored (Funded) Research Projects <button class="btn btn-info btn-xs" ng-mouseenter="define.sponsored = true" ng-mouseleave="define.sponsored = false">definition</button>
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.usage" name="usage" value="Non-sponsored" required>
-                        Instruction/Education/Departmental (Non-Sponsored) Research <i class="btn btn-info btn-xs" ng-mouseenter="define.nonSponsored = true" ng-mouseleave="define.nonSponsored = false">definition</i>
+                    <label for="non-sponsored">
+                        <input id="non-sponsored" type="radio" ng-model="survey.usage" name="usage" value="Non-sponsored" required>
+                        Instruction/Education/Departmental (Non-Sponsored) Research <button class="btn btn-info btn-xs" ng-mouseenter="define.nonSponsored = true" ng-mouseleave="define.nonSponsored = false">definition</button>
                     </label>
                 </div>
                 <div class="radio">
-                    <label>
-                        <input type="radio" ng-model="survey.usage" name="usage" value="Other activities" required>
-                        Other Activities <i class="btn btn-info btn-xs" ng-mouseenter="define.other = true" ng-mouseleave="define.other = false">definition</i>
+                    <label for="other-activities">
+                        <input id="other-activities" type="radio" ng-model="survey.usage" name="usage" value="Other activities" required>
+                        Other Activities <button class="btn btn-info btn-xs" ng-mouseenter="define.other = true" ng-mouseleave="define.other = false">definition</button>
                     </label>
                 </div>
 
             </div>
-        </div>
+        </fieldset>
 
         <!-- Usage definitions -->
         <!-- Sponsored -->
@@ -266,14 +267,14 @@
 
         <!-- if Sponsored (Funded) -->
         <div class="form-group bg-color-1 row">
-            <div class="container">
-                <p>5 - If you indicated Sponsored (Funded) Research Projects in question 4, please provide the following information:</p>
-                <p>Sponsor or fund source name, for example, National Institutes of Health, National Science Foundation, National Endowment for the Arts, Mellon Foundation, University funded research: (Please specify)</p>
-                <input type="text" class="form-control" ng-model="survey.sponsor">
-                <p> OR Principal investigator/researcher:</p>
-                <input type="text" class="form-control" ng-model="survey.researcher">
-                <p>OR Name of the grant:</p>
-                <input type="text" class="form-control" ng-model="survey.grant">
+            <div class="container text-enter">
+                <legend>5 - If you indicated Sponsored (Funded) Research Projects in question 4, please provide the following information:</legend>
+                <label for="sponsor">Sponsor or fund source name, for example, National Institutes of Health, National Science Foundation, National Endowment for the Arts, Mellon Foundation, University funded research: (Please specify)</label>
+                <input id="sponsor" type="text" class="form-control" ng-model="survey.sponsor">
+                <label for="researcher"> OR Principal investigator/researcher:</label>
+                <input id="researcher" type="text" class="form-control" ng-model="survey.researcher">
+                <label for="grant">OR Name of the grant:</label>
+                <input id="grant" type="text" class="form-control" ng-model="survey.grant">
             </div>
         </div>
 
@@ -283,7 +284,7 @@
 
     <div class="container" ng-if="thanks">
         <h1>Thanks for taking the survey</h1>
-        <h3>Please click the continue button to be taken to your requested resource</h3>
+        <h2>Please click the continue button to be taken to your requested resource</h3>
         <p>url: {{url}}</p>
         <a class="btn btn-warning" ng-href="{{url}}">Continue</a>
     </div>
