@@ -20,8 +20,9 @@
     </header>
 
     <div class="container">
-        <h2 class="main-heading">This survey is being conducted during a two-hour time period today by the University of Colorado Boulder to assess the usage of online resources and library services at UCB.</h2>
-        <h3 class="main-heading">After completing the survey, you will be connected to the resource you selected. Your response to this short survey is important. All responses are anonymous. Thank you for your help.</h3>
+        <h2>Why an I receiving the survey?</h2>
+        <p class="main-heading">This survey is being conducted during a two-hour time period today by the University of Colorado Boulder to assess the usage of online resources and library services at UCB.</p>
+        <p class="main-heading">After completing the survey, you will be connected to the resource you selected. Your response to this short survey is important. All responses are anonymous. Thank you for your help.</p>
     </div>
 
 
@@ -270,7 +271,8 @@
 
                 <legend class="bg-color-1 pull-left">5 - If you indicated Sponsored (Funded) Research Projects in question 4, please provide the following information:</legend>
 
-                <label for="sponsor">Sponsor or fund source name, for example, National Institutes of Health, National Science Foundation, National Endowment for the Arts, Mellon Foundation, University funded research: (Please specify)</label>
+                <label for="sponsor" aria-describedby=”sponsor”>Sponsor or fund source name,</label>
+                <span id=”sponsor”>for example, National Institutes of Health, National Science Foundation, National Endowment for the Arts, Mellon Foundation, University funded research: (Please specify)</span>
                 <input id="sponsor" type="text" class="form-control" ng-model="survey.sponsor">
 
                 <label for="researcher"> OR Principal investigator/researcher:</label>

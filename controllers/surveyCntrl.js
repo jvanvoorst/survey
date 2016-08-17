@@ -7,15 +7,17 @@ var surveyActive = true;
 module.exports = {
 
     startSurvey: function(req, res) {
-        // check if encoded url had a url in it
+
+        var redirectUrl = '';
+        // check if url had a url parameter in it
         if (req.query.url) {
-            var redirectUrl = req.query.url //.slice(1, req.query.url.length -1);
+            redirectUrl = req.query.url ;//.slice(1, req.query.url.length -1);
         }
         console.log('redirectUrl: ' + redirectUrl);
 
         if (surveyActive) {
 
-            // check if encoded url has a session id in it
+            // check if url has a session id parameter in it
             if (req.query.id) {
 
                 var id = Number(req.query.id);
@@ -26,13 +28,13 @@ module.exports = {
                     console.log('findOne ', + result);
                     if (result) {
                         // sessionID is already in database so send user to their resource
-                        console.log('ID found sending to resource')
+                        console.log('ID found sending to resource');
                         if (redirectUrl) {res.redirect(redirectUrl);}
                         else {res.redirect(defaultUrl);}
                     }
                     else {
                         // SessionID is new so send user to survey
-                        console.log('Unique ID send to survey')
+                        console.log('Unique ID send to survey');
                         res.sendFile('/html/index.html', {root : './public'});
                     }
                 });

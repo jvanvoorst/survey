@@ -45,3 +45,22 @@ legend {
     font-weight: 400;
     padding-top: 15px;
 }
+
+/*  .btn:focus, select:focus, select:active, input:focus, input:active, label[for]:focus, label[for]:active, input:hover, select:hover {
+    color: #000;
+    background-color: #F1DADA;
+    border: 3px solid red;
+    outline-style: solid;
+    outline-color: red;
+} */
+
+/*.form-control:focus {
+    background-color: red;
+    outline-style: solid;
+    outline-color: red;
+}*/
+/*input:focus {
+    background-color: red;
+    outline-color: red;
+    outline-style: solid;
+}*/
