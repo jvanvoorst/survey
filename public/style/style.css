@@ -46,21 +46,16 @@ legend {
     padding-top: 15px;
 }
 
-/*  .btn:focus, select:focus, select:active, input:focus, input:active, label[for]:focus, label[for]:active, input:hover, select:hover {
-    color: #000;
-    background-color: #F1DADA;
+/* for accessibility visibility */
+#undergrad:focus, #grad:focus, #faculty:focus, #staff:focus, #post-doc:focus, #other-user:focus, #non-user:focus,
+#arts:focus, #leeds:focus, #education:focus, #engineering:focus, #media:focus, #law:focus, #music:focus, #cont-ed:focus, #research:focus, #other-affiliation:focus, #non-affiliation:focus,
+#library:focus, #campus:focus, #off-campus:focus, #sponsored:focus, #non-sponsored:focus, #other-activities:focus {
+    outline-style: dashed;
+    outline-color: red;
+    outline-offset: 2px;
+    outline-width: 3px;
+}
+.btn:focus, .form-control:focus {
     border: 3px solid red;
-    outline-style: solid;
-    outline-color: red;
-} */
+}
 
-/*.form-control:focus {
-    background-color: red;
-    outline-style: solid;
-    outline-color: red;
-}*/
-/*input:focus {
-    background-color: red;
-    outline-color: red;
-    outline-style: solid;
-}*/

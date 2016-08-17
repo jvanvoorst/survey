@@ -20,7 +20,7 @@
     </header>
 
     <div class="container">
-        <h2>Why an I receiving the survey?</h2>
+        <h2>Why am I receiving this survey?</h2>
         <p class="main-heading">This survey is being conducted during a two-hour time period today by the University of Colorado Boulder to assess the usage of online resources and library services at UCB.</p>
         <p class="main-heading">After completing the survey, you will be connected to the resource you selected. Your response to this short survey is important. All responses are anonymous. Thank you for your help.</p>
     </div>
@@ -29,7 +29,7 @@
     <form name="form" ng-submit="submitSurvey()" ng-if="!thanks" novalidate>
 
         <!-- 1 - User Status -->
-        <fieldset class="form-group bg-color-1 container" ng-class="{'missing': form.user.$invalid && submitted}">
+        <fieldset class="form-group bg-color-1 container radio-group" ng-class="{'missing': form.user.$invalid && submitted}">
 
                 <legend class="bg-color-1 pull-left" ng-class="{'missing': form.user.$invalid && submitted}">1 - Are You a:</legend>
 
@@ -207,21 +207,21 @@
                     <label for="sponsored">
                         <input id="sponsored" type="radio" ng-model="survey.usage" name="usage" value="Sponsored" required>
                         Sponsored (Funded) Research Projects
-                        <button class="btn btn-info btn-xs" ng-mouseenter="define.sponsored = true" ng-mouseleave="define.sponsored = false">definition</button>
+                        <span class="btn btn-info btn-xs" ng-mouseenter="define.sponsored = true" ng-mouseleave="define.sponsored = false" tabindex="0">definition</span>
                     </label>
                 </div>
                 <div class="radio">
                     <label for="non-sponsored">
                         <input id="non-sponsored" type="radio" ng-model="survey.usage" name="usage" value="Non-sponsored" required>
                         Instruction/Education/Departmental (Non-Sponsored) Research
-                        <button class="btn btn-info btn-xs" ng-mouseenter="define.nonSponsored = true" ng-mouseleave="define.nonSponsored = false">definition</button>
+                        <span class="btn btn-info btn-xs" ng-mouseenter="define.nonSponsored = true" ng-mouseleave="define.nonSponsored = false" tabindex="0">definition</span>
                     </label>
                 </div>
                 <div class="radio">
                     <label for="other-activities">
                         <input id="other-activities" type="radio" ng-model="survey.usage" name="usage" value="Other activities" required>
                         Other Activities
-                        <button class="btn btn-info btn-xs" ng-mouseenter="define.other = true" ng-mouseleave="define.other = false">definition</button>
+                        <span class="btn btn-info btn-xs" ng-mouseenter="define.other = true" ng-mouseleave="define.other = false" tabindex="0">definition</span>
                     </label>
                 </div>
 
@@ -229,7 +229,7 @@
 
         <!-- Usage definitions -->
         <!-- Sponsored -->
-        <div ng-if="define.sponsored">
+        <div ng-if="define.sponsored" class="container">
             <h4>Sponsored (Funded) Research Projects</h4>
             <p>This includes:</p>
             <ul>
@@ -242,7 +242,7 @@
             <p>This category includes only specially funded research projects, which are separately budgeted and accounted for as organized research projects by the institution.</p>
         </div>
         <!-- Non Sponsored -->
-        <div ng-if="define.nonSponsored">
+        <div ng-if="define.nonSponsored" class="container">
             <h4>Instruction/Education/Departmental (Non-Sponsored) Research</h4>
             <p>This includes:</p>
             <ul>
@@ -255,7 +255,7 @@
             </ul>
         </div>
         <!-- Other -->
-        <div ng-if="define.other">
+        <div ng-if="define.other" class="container">
             <h4>Other Activities</h4>
             <p>This includes:</p>
             <ul>
@@ -289,7 +289,7 @@
 
     </form>
 
-    <div class="container" ng-if="thanks">
+    <div class="container" ng-if="thanks" aria-live="assertive">
         <h1>Thanks for taking the survey</h1>
         <h2>Please click the continue button to be taken to your requested resource</h2>
         <p>url: {{url}}</p>

@@ -128,4 +128,9 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
 
     };
 
+    $scope.suppress = function($event) {
+        $event.stopPropagation();
+        console.log('stopped');
+    }
+
 }]);
