@@ -31,12 +31,10 @@ var surveySchema = mongoose.Schema( {
         required: true
     },
     sessionID: {
-        type: Number,
-        required: true
+        type: String,
     },
     url: {
         type: String,
-        required: true
     }
 });
 
