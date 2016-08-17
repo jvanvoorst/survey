@@ -20,7 +20,7 @@ module.exports = {
             // check if url has a session id parameter in it
             if (req.query.id) {
 
-                var id = Number(req.query.id);
+                var id = req.query.id;
                 console.log('sessionID: ' + id);
 
                 // check for session id in database
