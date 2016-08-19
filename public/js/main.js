@@ -91,9 +91,15 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
         return urlObj;
     }
 
-    // grab the url and parse out the parameters
+    // grab the url and create urlObj out of the parameters
     if (window.location) {
         $scope.urlObj= urlObject({'url':window.location.href});
+
+        // to be used if OCLC cannot change the url encode
+        /////////////////////////////////////////////////////////////////////////////
+        var qurl = unescape(window.location.search.split('qurl=')[1]);
+        $scope.urlObj.parameters.url = qurl;
+        /////////////////////////////////////////////////////////////////////////////
     }
 
 
@@ -127,10 +133,5 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
         }
 
     };
-
-    $scope.suppress = function($event) {
-        $event.stopPropagation();
-        console.log('stopped');
-    }
 
 }]);
