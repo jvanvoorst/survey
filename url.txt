@@ -1,0 +1,7 @@
+localhost:8082/survey?id=123567&url=http://search.ebscohost.com/login.aspx
+
+https://login.colorado.idm.oclc.org:9443/menu
+
+http://colorado.idm.oclc.org:9080/login?user=coloradonav&pass=8dFrSjLx&url=http://adage.com
+
+localhost:8082/survey?id=123&url=http%3a%2f%2fcolorado.idm.oclc.org%2flogin%3furl%3dhttp%3a%2f%2fsearch.ebscohost.com%2flogin.aspx%3fauth%3dip%26profile%3dsubject

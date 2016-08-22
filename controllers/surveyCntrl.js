@@ -9,26 +9,27 @@ module.exports = {
     startSurvey: function(req, res) {
 
         var redirectUrl = '';
-        // check if url had a url parameter in it
+
+        // check if url has a url parameter in it
         if (req.query.url) {
-            redirectUrl = req.query.url ;//.slice(1, req.query.url.length -1);
+            redirectUrl = req.query.url ;
+            console.log('found url setting redirectUrl to ' + redirectUrl);
         }
-        console.log('redirectUrl: ' + redirectUrl);
 
         if (surveyActive) {
 
+            console.log('survey active');
             // check if url has a session id parameter in it
             if (req.query.id) {
 
                 var id = req.query.id;
-                console.log('sessionID: ' + id);
+                console.log('sessionID found setting id to ' + id);
 
                 // check for session id in database
                 Survey.findOne({'sessionID': id}, function(err, result) {
-                    console.log('findOne ', + result);
                     if (result) {
                         // sessionID is already in database so send user to their resource
-                        console.log('ID found sending to resource');
+                        console.log('ID found in database sending to resource');
                         if (redirectUrl) {res.redirect(redirectUrl);}
                         else {res.redirect(defaultUrl);}
                     }
@@ -42,12 +43,17 @@ module.exports = {
 
             // if there is no session ID then just send to survey
             else {
+                console.log('no session id sending to survey');
                 res.sendFile('/html/index.html', {root : './public'});
             }
         }
         // survey is not active send to requested resource else default url
-        else if (redirectUrl) { res.redirect(redirectUrl); }
+        else if (redirectUrl) {
+            console.log('survey not active sending to requested resource');
+            res.redirect(redirectUrl);
+        }
         else {
+            console.log('survey not active no url, sending to default');
             res.redirect(defaultUrl);
         }
     },

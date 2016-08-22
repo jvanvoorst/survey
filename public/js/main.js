@@ -97,9 +97,12 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
 
         // to be used if OCLC cannot change the url encode
         /////////////////////////////////////////////////////////////////////////////
-        var qurl = unescape(window.location.search.split('qurl=')[1]);
-        $scope.urlObj.parameters.url = qurl;
+        // var qurl = unescape(window.location.search.split('qurl=')[1]);
+        // $scope.urlObj.parameters.url = qurl;
         /////////////////////////////////////////////////////////////////////////////
+
+        console.log($scope.urlObj.parameters.id);
+        console.log(unescape($scope.urlObj.parameters.url));
     }
 
 
@@ -115,7 +118,7 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
 
             // add the session id and url to the survey object before sending to database
             if ($scope.urlObj.parameters.id) { $scope.survey.sessionID = $scope.urlObj.parameters.id; }
-            if ($scope.urlObj.parameters.url) { $scope.survey.url = $scope.urlObj.parameters.url; }
+            if ($scope.urlObj.parameters.url) { $scope.survey.url = unescape($scope.urlObj.parameters.url); }
 
             $http.post('/api/submitSurvey', $scope.survey).then(function(res) {
 
