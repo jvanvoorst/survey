@@ -10,6 +10,8 @@ module.exports = {
 
         var redirectUrl = '';
 
+        console.log('start survey');
+
         // check if url has a url parameter in it
         if (req.query.url) {
             redirectUrl = req.query.url ;
