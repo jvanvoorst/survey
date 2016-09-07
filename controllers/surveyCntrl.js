@@ -65,7 +65,11 @@ module.exports = {
         var redirectUrl = req.body.url;
         console.log('redirectURL ' + redirectUrl);
 
-        var survey = new Survey(req.body);
+        var surveyData = req.body;
+
+        surveyData.timeStamp = new Date();
+
+        var survey = new Survey(surveyData);
         survey.save(function(err) {
             if (err) {
                 console.log('error writing to DB');

@@ -5,3 +5,7 @@ https://login.colorado.idm.oclc.org:9443/menu
 http://colorado.idm.oclc.org:9080/login?user=coloradonav&pass=8dFrSjLx&url=http://adage.com
 
 localhost:8082/survey?id=123&url=http%3a%2f%2fcolorado.idm.oclc.org%2flogin%3furl%3dhttp%3a%2f%2fsearch.ebscohost.com%2flogin.aspx%3fauth%3dip%26profile%3dsubject
+
+https://colorado.idm.oclc.org/login?url=https://colorado-illiad-oclc-org.colorado.idm.oclc.org/illiad/COD/illiad.dll/OpenURL?sid=info:sid/ProQ:agriculturejournals&genre=article&title=Renewable+agriculture+and+food+systems&atitle=Spatial%20analysis%20of%20the%20participation%20in%20agri-environment%20measures%20for%20organic%20farming%20Abstract&volume=31&part=&issue=04&date=2016-08&spage=375&epage=386&issn=17421705&aulast=Boncinelli&aufirst=Fabio&espnumber=&CitedIn=info:sid/ProQ:agriculturejournals
+
+https://colorado-idm-oclc-org.colorado.idm.oclc.org:9443/login?url=https://colorado-illiad-oclc-org.colorado.idm.oclc.org:9443/illiad/COD/illiad.dll/OpenURL?sid=info:sid/ProQ:agriculturejournals&genre=article&title=Renewable+agriculture+and+food+systems&atitle=Spatial%20analysis%20of%20the%20participation%20in%20agri-environment%20measures%20for%20organic%20farming%20Abstract&volume=31&part=&issue=04&date=2016-08&spage=375&epage=386&issn=17421705&aulast=Boncinelli&aufirst=Fabio&espnumber=&CitedIn=info:sid/ProQ:agriculturejournals

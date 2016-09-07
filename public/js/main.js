@@ -4,7 +4,6 @@ app.controller('surveyCntrl', ['$scope', '$http', '$window', function($scope, $h
 
     $scope.submitted = false;
     $scope.survey = {};
-    $scope.survey.timeStamp = new Date();
     $scope.thanks = false;
     $scope.urlObj = {};
 
