@@ -8,7 +8,9 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-messages.min.js"></script>
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../dist/jquery-accessible-accordion-aria.js"></script>
+
 </head>
 
 <body ng-controller="surveyCntrl">
@@ -207,64 +209,64 @@
                     <label for="sponsored">
                         <input id="sponsored" type="radio" ng-model="survey.usage" name="usage" value="Sponsored" required>
                         Sponsored (Funded) Research Projects
-                        <span class="btn btn-info btn-xs" ng-mouseenter="define.sponsored = true" ng-mouseleave="define.sponsored = false" tabindex="0">definition</span>
                     </label>
+                    <div class="js-accordion" data-accordion-prefix-classes="accordion">
+                        <p class="js-accordion__header accordion-header">definition</p>
+                        <div class="js-accordion__panel">
+                            <p>This includes:</p>
+                            <ul>
+                                <li>Research funded by grants or contracts from federal, state, or local governments</li>
+                                <li>Research funded by grants, contracts or gifts from a foundation or other outside party</li>
+                                <li>University funded research</li>
+                                <li>Research training</li>
+                            </ul>
+                            <h5>Note:</h5>
+                            <p>This category includes only specially funded research projects, which are separately budgeted and accounted for as organized research projects by the institution.</p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="radio">
                     <label for="non-sponsored">
                         <input id="non-sponsored" type="radio" ng-model="survey.usage" name="usage" value="Non-sponsored" required>
                         Instruction/Education/Departmental (Non-Sponsored) Research
-                        <span class="btn btn-info btn-xs" ng-mouseenter="define.nonSponsored = true" ng-mouseleave="define.nonSponsored = false" tabindex="0">definition</span>
                     </label>
+                    <div class="js-accordion" data-accordion-prefix-classes="accordion">
+                        <p class="js-accordion__header accordion-header">definition</p>
+                        <div class="js-accordion__panel">
+                            <p>This includes:</p>
+                            <ul>
+                                <li>Student coursework, including term papers</li>
+                                <li>Theses, dissertations, etc.</li>
+                                <li>Preparation for class</li>
+                                <li>Teaching activities</li>
+                                <li>Sponsored training (excluding sponsored training on research techniques, which is included in the Sponsored (Funded) Research Projects definition)</li>
+                                <li>Independent faculty research, writing, scholarly activities (includes all research activities not separately budgeted for as sponsored research projects)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="radio">
                     <label for="other-activities">
                         <input id="other-activities" type="radio" ng-model="survey.usage" name="usage" value="Other activities" required>
                         Other Activities
-                        <span class="btn btn-info btn-xs" ng-mouseenter="define.other = true" ng-mouseleave="define.other = false" tabindex="0">definition</span>
                     </label>
+                    <div class="js-accordion" data-accordion-prefix-classes="accordion">
+                        <p class="js-accordion__header accordion-header">definition</p>
+                        <div class="js-accordion__panel">
+                            <p>This includes:</p>
+                            <ul>
+                                <li>Recreational usages (not for class)</li>
+                                <li>Administrative work, including grant preparation</li>
+                                <li>Other purposes not identified in other categories </li>
+                                <li>Any usage by non-UCB patrons</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
         </fieldset>
-
-        <!-- Usage definitions -->
-        <!-- Sponsored -->
-        <div ng-if="define.sponsored" class="container">
-            <h4>Sponsored (Funded) Research Projects</h4>
-            <p>This includes:</p>
-            <ul>
-                <li>Research funded by grants or contracts from federal, state, or local governments</li>
-                <li>Research funded by grants, contracts or gifts from a foundation or other outside party</li>
-                <li>University funded research</li>
-                <li>Research training</li>
-            </ul>
-            <h5>Note:</h5>
-            <p>This category includes only specially funded research projects, which are separately budgeted and accounted for as organized research projects by the institution.</p>
-        </div>
-        <!-- Non Sponsored -->
-        <div ng-if="define.nonSponsored" class="container">
-            <h4>Instruction/Education/Departmental (Non-Sponsored) Research</h4>
-            <p>This includes:</p>
-            <ul>
-                <li>Student coursework, including term papers</li>
-                <li>Theses, dissertations, etc.</li>
-                <li>Preparation for class</li>
-                <li>Teaching activities</li>
-                <li>Sponsored training (excluding sponsored training on research techniques, which is included in the Sponsored (Funded) Research Projects definition)</li>
-                <li>Independent faculty research, writing, scholarly activities (includes all research activities not separately budgeted for as sponsored research projects)</li>
-            </ul>
-        </div>
-        <!-- Other -->
-        <div ng-if="define.other" class="container">
-            <h4>Other Activities</h4>
-            <p>This includes:</p>
-            <ul>
-                <li>Recreational usages (not for class)</li>
-                <li>Administrative work, including grant preparation</li>
-                <li>Other purposes not identified in other categories </li>
-                <li>Any usage by non-UCB patrons</li>
-            </ul>
-        </div>
 
         <!-- if Sponsored (Funded) -->
         <fieldset class="form-group bg-color-1 text-enter container">

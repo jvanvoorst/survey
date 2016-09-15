@@ -59,3 +59,13 @@ legend {
     border: 3px solid red;
 }
 
+/*  Accessible accordion */
+.accordion__panel[aria-hidden=true] {
+  display: none;
+}
+.accordion {
+    display: inline;
+}
+.accordion-header {
+    display: none;
+}
